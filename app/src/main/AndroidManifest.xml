@@ -9,15 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".DataListView"
-            android:label="@string/app_name">
-
-        </activity>
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".BarreDeNavigation"
+            android:label="@string/title_activity_barre_de_navigation"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

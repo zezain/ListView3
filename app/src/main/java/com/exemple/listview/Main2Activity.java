@@ -27,12 +27,10 @@ public class Main2Activity extends AppCompatActivity {
         });
     }
 
-    // commentaire
-
 
     public void sendMessage(View view)
     {
-        Intent intent = new Intent(Main2Activity.this, DataListView.class);
+        Intent intent = new Intent(Main2Activity.this, BarreDeNavigation.class);
         startActivity(intent);
     }
 }
