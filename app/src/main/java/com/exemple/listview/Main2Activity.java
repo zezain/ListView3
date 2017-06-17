@@ -27,6 +27,9 @@ public class Main2Activity extends AppCompatActivity {
         });
     }
 
+    // commentaire
+
+
     public void sendMessage(View view)
     {
         Intent intent = new Intent(Main2Activity.this, DataListView.class);
