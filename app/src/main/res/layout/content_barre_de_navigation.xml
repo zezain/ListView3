@@ -14,7 +14,7 @@
         android:layout_height="fill_parent">
 
         <TextView
-            android:text="Frame Demo"
+            android:text=""
             android:textSize="30px"
             android:textStyle="bold"
             android:layout_height="fill_parent"
