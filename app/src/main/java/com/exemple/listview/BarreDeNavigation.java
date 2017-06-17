@@ -81,13 +81,13 @@ public class BarreDeNavigation extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        //FragmentManager fragmentManager = getSupportFragmentManager();
 
         if (id == R.id.nav_camera) {
             Intent intent = new Intent(BarreDeNavigation.this, DataListView.class);
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new ItemFragment()).commit();
+            getFragmentManager().beginTransaction().replace(R.id.content_frame, new FirstFragment()).commit();
 
         } else if (id == R.id.nav_slideshow) {
 
