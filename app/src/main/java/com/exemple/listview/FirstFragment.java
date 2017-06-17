@@ -50,7 +50,7 @@ public class FirstFragment extends ListFragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         openAndQueryDatabase();
-        setListAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, results));
+        setListAdapter(new ArrayAdapter<String>(getActivity(),R.layout.textview, results));
         getListView().setTextFilterEnabled(true);
     }
 
@@ -76,14 +76,15 @@ public class FirstFragment extends ListFragment{
             newDB = dbHelper.getWritableDatabase();
 
             Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
-            Cursor c = newDB.rawQuery("SELECT NumPays, Nom FROM pays" , null);
+            
+            Cursor c = newDB.rawQuery("SELECT Titre, Annee FROM films ORDER BY Annee" , null);
 
             if (c != null) {
                 if (c.moveToFirst()) {
                     do {
-                        String Titre = c.getString(c.getColumnIndex("NumPays"));
-                        String Annee = c.getString(c.getColumnIndex("Nom"));
-                        results.add(" " + Titre + " " + Annee);
+                        String Titre = c.getString(c.getColumnIndex("Titre"));
+                        String Annee = c.getString(c.getColumnIndex("Annee"));
+                        results.add(Annee + "      " + Titre);
                     } while (c.moveToNext());
                 }
 

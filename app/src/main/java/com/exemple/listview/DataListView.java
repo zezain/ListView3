@@ -43,7 +43,7 @@ public class DataListView extends ListActivity {
 			newDB = dbHelper.getWritableDatabase();
 
 			Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
-			Cursor c = newDB.rawQuery("SELECT NumPays, Nom FROM pays", null);
+			Cursor c = newDB.rawQuery("SELECT NumPays, Nom FROM pays" , null);
 
 			if (c != null) {
 				if (c.moveToFirst()) {
