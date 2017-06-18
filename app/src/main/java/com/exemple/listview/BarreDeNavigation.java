@@ -25,13 +25,14 @@ import java.util.ArrayList;
 public class BarreDeNavigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    static ArrayList<String> Titre = new ArrayList<String>();
-    static ArrayList<String> Annee = new ArrayList<String>();
-    static ArrayList<String> Resume = new ArrayList<String>();
-    static ArrayList<String> Realisateur = new ArrayList<String>();
-    static ArrayList<String> Note = new ArrayList<String>();
-    static ArrayList<String> Image = new ArrayList<String>();
-    static ArrayList<ArrayList<ArrayList<String>>> Acteur = new <ArrayList<ArrayList<String>>>();
+//    static ArrayList<String> Titre = new ArrayList<String>();
+//    static ArrayList<String> Annee = new ArrayList<String>();
+//    static ArrayList<String> Resume = new ArrayList<String>();
+//    static ArrayList<String> Realisateur = new ArrayList<String>();
+//  static ArrayList<String> Note = new ArrayList<String>();
+//    static ArrayList<String> Image = new ArrayList<String>();
+    static ArrayList<String> Reference = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,17 +121,18 @@ public class BarreDeNavigation extends AppCompatActivity
         return true;
     }
 
-    public void textClicked(View v){
-        ListView lv = (ListView)findViewById(android.R.id.list);
+    public void textClicked(View v) {
+        ListView lv = (ListView) findViewById(android.R.id.list);
         int position = lv.getPositionForView(v);
         Log.d("FRAGMENT ------", String.valueOf(position));
         // Animation animation = new AlphaAnimation(0.3f, 1.0f);
         // animation.setDuration(1000);
         Animation animation = AnimationUtils.loadAnimation(this.getApplicationContext(), R.anim.animation);
         v.startAnimation(animation);
-        Intent openNewIntent = new Intent( this, FicheFilm.class );
-        startActivity( openNewIntent );
+        Intent openNewIntent = new Intent(this, FicheFilm.class);
+        openNewIntent.putExtra("REFERENCE",Reference.get(position));
+        startActivity(openNewIntent);
 
-        }
     }
 }
+

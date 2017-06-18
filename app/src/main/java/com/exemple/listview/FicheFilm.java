@@ -5,10 +5,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 public class FicheFilm extends AppCompatActivity {
 
+    String refFilm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,13 @@ public class FicheFilm extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        refFilm = getIntent().getStringExtra("REFERENCE");
+
+    }
+
+    public void boutonFilm(View v){
+        Log.d("FILM A OUVRIR", refFilm );
     }
 
 }
