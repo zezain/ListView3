@@ -18,7 +18,7 @@ import android.widget.ArrayAdapter;
  * Created by Elise on 01/05/2017.
  */
 
-public class FirstFragment extends ListFragment{
+public class SecondFragment extends ListFragment{
 
     View myView;
     private ArrayList<String> results = new ArrayList<String>();
@@ -48,15 +48,15 @@ public class FirstFragment extends ListFragment{
             newDB = dbHelper.getWritableDatabase();
 
             Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
-            
-            Cursor c = newDB.rawQuery("SELECT Titre, Annee FROM films ORDER BY Annee" , null);
+
+            Cursor c = newDB.rawQuery("SELECT Titre, Annee FROM films ORDER BY Titre" , null);
 
             if (c != null) {
                 if (c.moveToFirst()) {
                     do {
                         String Titre = c.getString(c.getColumnIndex("Titre"));
                         String Annee = c.getString(c.getColumnIndex("Annee"));
-                        results.add(Annee + "      " + Titre);
+                        results.add(Titre + " (" + Annee+ ")");
                     } while (c.moveToNext());
                 }
 
@@ -66,7 +66,6 @@ public class FirstFragment extends ListFragment{
 
         } catch (SQLiteException se ) {
             Log.e(getClass().getSimpleName(), "Could not create or Open the database");
-            Log.d("Prout","Prout");
         } //finally {
 //        	if (newDB != null)
 //        		newDB.execSQL("DELETE FROM " + tableName);

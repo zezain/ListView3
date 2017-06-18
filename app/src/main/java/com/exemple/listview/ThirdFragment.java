@@ -18,7 +18,7 @@ import android.widget.ArrayAdapter;
  * Created by Elise on 01/05/2017.
  */
 
-public class FirstFragment extends ListFragment{
+public class ThirdFragment extends ListFragment{
 
     View myView;
     private ArrayList<String> results = new ArrayList<String>();
@@ -48,15 +48,16 @@ public class FirstFragment extends ListFragment{
             newDB = dbHelper.getWritableDatabase();
 
             Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
-            
-            Cursor c = newDB.rawQuery("SELECT Titre, Annee FROM films ORDER BY Annee" , null);
+
+            Cursor c = newDB.rawQuery("SELECT films.Titre, acteurs.Nom, acteurs.Prenom FROM films, acteurs, joue WHERE films.NumFilm=joue.NumFilm AND acteurs.NumActeur=joue.NumActeur" , null);
 
             if (c != null) {
                 if (c.moveToFirst()) {
                     do {
                         String Titre = c.getString(c.getColumnIndex("Titre"));
-                        String Annee = c.getString(c.getColumnIndex("Annee"));
-                        results.add(Annee + "      " + Titre);
+                        String Nom = c.getString(c.getColumnIndex("acteurs.Nom"));
+                        String Prenom = c.getString(c.getColumnIndex("acteurs.Prenom"));
+                        results.add(Prenom +" " + Nom +" ("+ Titre +")");
                     } while (c.moveToNext());
                 }
 
@@ -66,7 +67,6 @@ public class FirstFragment extends ListFragment{
 
         } catch (SQLiteException se ) {
             Log.e(getClass().getSimpleName(), "Could not create or Open the database");
-            Log.d("Prout","Prout");
         } //finally {
 //        	if (newDB != null)
 //        		newDB.execSQL("DELETE FROM " + tableName);

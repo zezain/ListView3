@@ -85,10 +85,12 @@ public class BarreDeNavigation extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             getFragmentManager().beginTransaction().replace(R.id.content_frame, new FirstFragment()).commit();
-        } else if (id == R.id.nav_gallery) {
 
+        } else if (id == R.id.nav_gallery) {
+            getFragmentManager().beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
 
         } else if (id == R.id.nav_slideshow) {
+            getFragmentManager().beginTransaction().replace(R.id.content_frame, new ThirdFragment()).commit();
 
         } else if (id == R.id.nav_manage) {
 
