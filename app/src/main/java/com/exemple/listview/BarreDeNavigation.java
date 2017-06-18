@@ -20,8 +20,18 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class BarreDeNavigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    static ArrayList<String> Titre = new ArrayList<String>();
+    static ArrayList<String> Annee = new ArrayList<String>();
+    static ArrayList<String> Resume = new ArrayList<String>();
+    static ArrayList<String> Realisateur = new ArrayList<String>();
+    static ArrayList<String> Note = new ArrayList<String>();
+    static ArrayList<String> Image = new ArrayList<String>();
+    static ArrayList<ArrayList<ArrayList<String>>> Acteur = new <ArrayList<ArrayList<String>>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,5 +128,9 @@ public class BarreDeNavigation extends AppCompatActivity
         // animation.setDuration(1000);
         Animation animation = AnimationUtils.loadAnimation(this.getApplicationContext(), R.anim.animation);
         v.startAnimation(animation);
+        Intent openNewIntent = new Intent( this, FicheFilm.class );
+        startActivity( openNewIntent );
+
+        }
     }
 }
