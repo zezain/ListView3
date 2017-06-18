@@ -13,13 +13,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 /**
  * Created by Elise on 01/05/2017.
  */
 
-public class FirstFragment extends ListFragment{
+public class FourthFragment extends ListFragment{
 
     View myView;
     private ArrayList<String> results = new ArrayList<String>();
@@ -49,15 +48,16 @@ public class FirstFragment extends ListFragment{
             newDB = dbHelper.getWritableDatabase();
 
             Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
-            
-            Cursor c = newDB.rawQuery("SELECT Titre, Annee FROM films ORDER BY Annee" , null);
+
+            Cursor c = newDB.rawQuery("SELECT films.Titre as Titre, realisateurs.Nom as Nom, realisateurs.Prenom as Prenom FROM films, realisateurs, realise WHERE films.NumFilm=realise.NumFilm AND realisateurs.NumReal=realise.NumReal ORDER BY realisateurs.Prenom" , null);
 
             if (c != null) {
                 if (c.moveToFirst()) {
                     do {
                         String Titre = c.getString(c.getColumnIndex("Titre"));
-                        String Annee = c.getString(c.getColumnIndex("Annee"));
-                        results.add(Annee + "      " + Titre);
+                        String Nom = c.getString(c.getColumnIndex("Nom"));
+                        String Prenom = c.getString(c.getColumnIndex("Prenom"));
+                        results.add(Prenom +" " + Nom +" - "+ Titre +"");
                     } while (c.moveToNext());
                 }
 
@@ -67,7 +67,6 @@ public class FirstFragment extends ListFragment{
 
         } catch (SQLiteException se ) {
             Log.e(getClass().getSimpleName(), "Could not create or Open the database");
-            Log.d("Prout","Prout");
         } //finally {
 //        	if (newDB != null)
 //        		newDB.execSQL("DELETE FROM " + tableName);
@@ -75,7 +74,5 @@ public class FirstFragment extends ListFragment{
 //        }
 
     }
-
-
 
 }

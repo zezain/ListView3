@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.ListView;
 
 public class BarreDeNavigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -93,7 +97,7 @@ public class BarreDeNavigation extends AppCompatActivity
             getFragmentManager().beginTransaction().replace(R.id.content_frame, new ThirdFragment()).commit();
 
         } else if (id == R.id.nav_manage) {
-
+            getFragmentManager().beginTransaction().replace(R.id.content_frame, new FourthFragment()).commit();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -103,5 +107,14 @@ public class BarreDeNavigation extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void textClicked(View v){
+        ListView lv = (ListView)findViewById(android.R.id.list);
+        int position = lv.getPositionForView(v);
+        Log.d("FRAGMENT ------", String.valueOf(position));
+        Animation animation1 = new AlphaAnimation(0.3f, 1.0f);
+        animation1.setDuration(1000);
+        v.startAnimation(animation1);
     }
 }

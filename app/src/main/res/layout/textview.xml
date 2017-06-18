@@ -6,4 +6,6 @@
     android:maxLines="1"
     android:padding="20sp"
     android:textColor="@color/colorPrimaryDark"
-    android:textSize="18sp" />
+    android:textSize="18sp"
+    android:onClick="textClicked"
+    />

@@ -49,15 +49,15 @@ public class ThirdFragment extends ListFragment{
 
             Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
 
-            Cursor c = newDB.rawQuery("SELECT films.Titre, acteurs.Nom, acteurs.Prenom FROM films, acteurs, joue WHERE films.NumFilm=joue.NumFilm AND acteurs.NumActeur=joue.NumActeur" , null);
+            Cursor c = newDB.rawQuery("SELECT films.Titre as Titre, acteurs.Nom as Nom, acteurs.Prenom as Prenom FROM films, acteurs, joue WHERE films.NumFilm=joue.NumFilm AND acteurs.NumActeur=joue.NumActeur ORDER BY acteurs.Prenom" , null);
 
             if (c != null) {
                 if (c.moveToFirst()) {
                     do {
                         String Titre = c.getString(c.getColumnIndex("Titre"));
-                        String Nom = c.getString(c.getColumnIndex("acteurs.Nom"));
-                        String Prenom = c.getString(c.getColumnIndex("acteurs.Prenom"));
-                        results.add(Prenom +" " + Nom +" ("+ Titre +")");
+                        String Nom = c.getString(c.getColumnIndex("Nom"));
+                        String Prenom = c.getString(c.getColumnIndex("Prenom"));
+                        results.add(Prenom +" " + Nom +" - "+ Titre +"");
                     } while (c.moveToNext());
                 }
 
