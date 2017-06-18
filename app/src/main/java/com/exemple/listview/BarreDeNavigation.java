@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ListView;
 
 public class BarreDeNavigation extends AppCompatActivity
@@ -113,8 +114,9 @@ public class BarreDeNavigation extends AppCompatActivity
         ListView lv = (ListView)findViewById(android.R.id.list);
         int position = lv.getPositionForView(v);
         Log.d("FRAGMENT ------", String.valueOf(position));
-        Animation animation1 = new AlphaAnimation(0.3f, 1.0f);
-        animation1.setDuration(1000);
-        v.startAnimation(animation1);
+        // Animation animation = new AlphaAnimation(0.3f, 1.0f);
+        // animation.setDuration(1000);
+        Animation animation = AnimationUtils.loadAnimation(this.getApplicationContext(), R.anim.animation);
+        v.startAnimation(animation);
     }
 }
