@@ -35,4 +35,6 @@ public class FicheFilm extends AppCompatActivity {
         Log.d("FILM A OUVRIR", refFilm );
     }
 
+
+
 }

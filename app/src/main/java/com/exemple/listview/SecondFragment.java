@@ -49,11 +49,14 @@ public class SecondFragment extends ListFragment{
 
             Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
 
-            Cursor c = newDB.rawQuery("SELECT Titre, Annee FROM films ORDER BY Titre" , null);
+            Cursor c = newDB.rawQuery("SELECT NumFilm, Titre, Annee FROM films ORDER BY Titre" , null);
+
+            BarreDeNavigation.Reference.clear();
 
             if (c != null) {
                 if (c.moveToFirst()) {
                     do {
+                        BarreDeNavigation.Reference.add(c.getString(c.getColumnIndex("NumFilm")));
                         String Titre = c.getString(c.getColumnIndex("Titre"));
                         String Annee = c.getString(c.getColumnIndex("Annee"));
                         results.add(Titre + " (" + Annee+ ")");

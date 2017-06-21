@@ -49,11 +49,14 @@ public class FourthFragment extends ListFragment{
 
             Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
 
-            Cursor c = newDB.rawQuery("SELECT films.Titre as Titre, realisateurs.Nom as Nom, realisateurs.Prenom as Prenom FROM films, realisateurs, realise WHERE films.NumFilm=realise.NumFilm AND realisateurs.NumReal=realise.NumReal ORDER BY realisateurs.Prenom" , null);
+            Cursor c = newDB.rawQuery("SELECT films.NumFilm as NumFilm, films.Titre as Titre, realisateurs.Nom as Nom, realisateurs.Prenom as Prenom FROM films, realisateurs, realise WHERE films.NumFilm=realise.NumFilm AND realisateurs.NumReal=realise.NumReal ORDER BY realisateurs.Prenom" , null);
+
+            BarreDeNavigation.Reference.clear();
 
             if (c != null) {
                 if (c.moveToFirst()) {
                     do {
+                        BarreDeNavigation.Reference.add(c.getString(c.getColumnIndex("NumFilm")));
                         String Titre = c.getString(c.getColumnIndex("Titre"));
                         String Nom = c.getString(c.getColumnIndex("Nom"));
                         String Prenom = c.getString(c.getColumnIndex("Prenom"));
