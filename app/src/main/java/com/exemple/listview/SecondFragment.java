@@ -14,9 +14,6 @@ import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
-/**
- * Created by Elise on 01/05/2017.
- */
 
 public class SecondFragment extends ListFragment{
 
@@ -52,7 +49,6 @@ public class SecondFragment extends ListFragment{
             Cursor c = newDB.rawQuery("SELECT NumFilm, Titre, Annee FROM films ORDER BY Titre" , null);
 
             BarreDeNavigation.Reference.clear();
-
             if (c != null) {
                 if (c.moveToFirst()) {
                     do {

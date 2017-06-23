@@ -1,5 +1,8 @@
 package com.exemple.listview;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,7 +13,9 @@ import android.view.View;
 
 public class FicheFilm extends AppCompatActivity {
 
+
     String refFilm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,5 +41,7 @@ public class FicheFilm extends AppCompatActivity {
     }
 
 
-
 }
+
+
+

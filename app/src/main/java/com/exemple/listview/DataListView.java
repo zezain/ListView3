@@ -16,7 +16,7 @@ public class DataListView extends ListActivity {
 	private ArrayList<String> results = new ArrayList<String>();
 	//private String tableName = DBHelper.tableName;
 	private SQLiteDatabase newDB;
-    /** Called when the activity is first created. */
+    /** Appelée quand l'acitivité est créée pour la première fois */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +60,6 @@ public class DataListView extends ListActivity {
 
 		} catch (SQLiteException se ) {
         	Log.e(getClass().getSimpleName(), "Could not create or Open the database");
-			Log.d("Prout","Prout");
        } //finally {
 //        	if (newDB != null)
 //        		newDB.execSQL("DELETE FROM " + tableName);

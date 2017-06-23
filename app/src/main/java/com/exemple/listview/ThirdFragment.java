@@ -14,10 +14,6 @@ import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
-/**
- * Created by Elise on 01/05/2017.
- */
-
 public class ThirdFragment extends ListFragment{
 
     View myView;

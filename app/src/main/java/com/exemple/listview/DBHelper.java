@@ -64,35 +64,11 @@ public class DBHelper extends SQLiteOpenHelper{
 
 		
 		if (dbExists) {
-			// do nothing
+			// on ne fait rien
 		} else {
 			//DB = currentContext.openOrCreateDatabase(DBName, 0, null);
-//			DB.execSQL("CREATE TABLE IF NOT EXISTS " +
-//        			tableName +
-//        			" (LastName VARCHAR, FirstName VARCHAR," +
-//        			" Country VARCHAR, Age INT(3));");
-//
-//        	DB.execSQL("INSERT INTO " +
-//        			tableName +
-//        			" Values ('M','Sing','India',25);");
-//        	DB.execSQL("INSERT INTO " +
-//        			tableName +
-//        			" Values ('C','Raje','India',25);");
-//        	DB.execSQL("INSERT INTO " +
-//        			tableName +
-//        			" Values ('D','Phonu','Argentina',20);");
-//        	DB.execSQL("INSERT INTO " +
-//        			tableName +
-//        			" Values ('V','Veera','EU',25);");
-//        	DB.execSQL("INSERT INTO " +
-//        			tableName +
-//        			" Values ('T','Shenoi','Bangla',25);");
-//        	DB.execSQL("INSERT INTO " +
-//        			tableName +
-//        			" Values ('L','Lamha','Australia',20);");
 
 			this.getReadableDatabase();
-
 
 
 			try {
@@ -119,7 +95,7 @@ public class DBHelper extends SQLiteOpenHelper{
 
 		} catch (SQLiteException e) {
 
-			// database does't exist yet.
+			// la bdd n'existe pas encore
 
 		}
 
@@ -133,13 +109,13 @@ public class DBHelper extends SQLiteOpenHelper{
 	}
 
 	/**
-	 * Copies your database from your local assets-folder to the just created empty database in the
-	 * system folder, from where it can be accessed and handled.
-	 * This is done by transfering bytestream.
+	 * Copie la bdd depuis notre fichier local asset vers la bdd vide qui a été créée
+	 * dans le fichier système, de là on peut y accéder.
+	 * Cela est effectué par flux d'octets.
 	 * */
 	private void copyDataBase() throws IOException {
 
-		//Open your local db as the input stream
+		//ouvre notre bdd comme flux d'entrée
 
 		try {
 			InputStream myInput = currentContext.getAssets().open(DBName);
@@ -148,22 +124,22 @@ public class DBHelper extends SQLiteOpenHelper{
 			Log.e("PAS DE BDD","PAS DE BDD");
 		}
 		InputStream myInput = currentContext.getAssets().open(DBName);
-		// Path to the just created empty db
+		// Chemin de la bdd vide qui a été créée
 		String outFileName = DBPath + DBName;
 
 		Log.d("NOM DE SORTIE", outFileName);
 
-		//Open the empty db as the output stream
+		//Ouvre la bdd vide comme flux de sortie
 		OutputStream myOutput = new FileOutputStream(outFileName);
 
-		//transfer bytes from the inputfile to the outputfile
+		//transfert d'octets du fichier d'entrée au fichier de sortie
 		byte[] buffer = new byte[1024];
 		int length;
 		while ((length = myInput.read(buffer))>0){
 			myOutput.write(buffer, 0, length);
 		}
 
-		//Close the streams
+		//Fermeture des flux
 		myOutput.flush();
 		myOutput.close();
 		myInput.close();

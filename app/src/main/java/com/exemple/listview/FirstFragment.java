@@ -15,9 +15,6 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-/**
- * Created by Elise on 01/05/2017.
- */
 
 public class FirstFragment extends ListFragment{
 
@@ -70,7 +67,6 @@ public class FirstFragment extends ListFragment{
 
         } catch (SQLiteException se ) {
             Log.e(getClass().getSimpleName(), "Could not create or Open the database");
-            Log.d("Prout","Prout");
         } //finally {
 //        	if (newDB != null)
 //        		newDB.execSQL("DELETE FROM " + tableName);
