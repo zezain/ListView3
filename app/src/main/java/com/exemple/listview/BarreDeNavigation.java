@@ -110,6 +110,10 @@ public class BarreDeNavigation extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
             getFragmentManager().beginTransaction().replace(R.id.content_frame, new FourthFragment()).commit();
+
+        } else if (id == R.id.nav_pays) {
+            getFragmentManager().beginTransaction().replace(R.id.content_frame, new FifthFragment()).commit();
+
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

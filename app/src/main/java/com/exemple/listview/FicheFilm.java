@@ -15,7 +15,16 @@ public class FicheFilm extends AppCompatActivity {
 
 
     String refFilm;
+    private SQLiteDatabase newDB;
+    String Annee;
+    String Titre;
+    String NumFilm;
+    String Resume;
+    String Image_path;
+    String Duree;
+    String Note;
 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +49,39 @@ public class FicheFilm extends AppCompatActivity {
         Log.d("FILM A OUVRIR", refFilm );
     }
 
+    private void openAndQueryDatabase() {
+        try {
+            DBHelper dbHelper = new DBHelper(this.getApplicationContext());
+            newDB = dbHelper.getWritableDatabase();
 
+            Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
+
+            Cursor c = newDB.rawQuery("SELECT Titre, Annee, Resume, Image, Duree, Note FROM films ORDER BY Annee WHERE NumFilm = " + refFilm, null);
+
+            BarreDeNavigation.Reference.clear();
+
+            if (c != null) {
+                if (c.moveToFirst()) {
+                    do {
+
+                        String Titre = c.getString(c.getColumnIndex("Titre"));
+                        String Annee = c.getString(c.getColumnIndex("Annee"));
+                        String Resume = c.getString(c.getColumnIndex("Resume"));
+                        String Image = c.getString(c.getColumnIndex("Image"));
+                        String Duree = c.getString(c.getColumnIndex("Duree"));
+                        String Note = c.getString(c.getColumnIndex("Note"));
+
+                    } while (c.moveToNext());
+                }
+
+                c.close();
+            }
+
+
+        } catch (SQLiteException se ) {
+            Log.e(getClass().getSimpleName(), "Could not create or Open the database");
+        }
+    }
 }
 
 

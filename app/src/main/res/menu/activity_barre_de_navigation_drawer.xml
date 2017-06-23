@@ -4,20 +4,24 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@android:drawable/ic_menu_today"
             android:title="Année" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@android:drawable/ic_menu_sort_alphabetically"
             android:title="Titre" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_cc_am"
             android:title="Acteur" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_menu_star"
             android:title="Réalisateur" />
+        <item
+            android:id="@+id/nav_pays"
+            android:icon="@android:drawable/ic_menu_mapmode"
+            android:title="Pays" />
     </group>
 
     <item android:title="Communicate">
