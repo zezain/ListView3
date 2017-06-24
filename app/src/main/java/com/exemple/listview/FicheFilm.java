@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class FicheFilm extends AppCompatActivity {
 
@@ -30,8 +31,10 @@ public class FicheFilm extends AppCompatActivity {
     String Duree;
     String Note;
     String Pays;
-    String NomReal;
-    String PrenomReal;
+    String Realisateur;
+    ArrayList<String> Acteurs;
+
+
 
     
     @Override
@@ -100,19 +103,29 @@ public class FicheFilm extends AppCompatActivity {
             }
 
             // Requête pour le réalisateur
-            Cursor cter = newDB.rawQuery("SELECT realisateurs.Nom as Nom, realisateurs.Prenom as Prenom FROM films, , realise WHERE films.NumFilm= realise.NumFilm AND realisateurs.NumReal=realise.NumReal AND films.NumFilm = " + refFilm, null);
+            Cursor cter = newDB.rawQuery("SELECT realisateurs.Nom as Nom, realisateurs.Prenom as Prenom FROM films, realisateurs, realise WHERE films.NumFilm= realise.NumFilm AND realisateurs.NumReal=realise.NumReal AND films.NumFilm = " + refFilm, null);
             if (cter!= null) {
                 if (cter.moveToFirst()) {
                     do {
-
-                       NomReal = cter.getString(cter.getColumnIndex("Nom"));
-                       PrenomReal = cter.getString(cter.getColumnIndex("Prenom"));
+                      Realisateur = cter.getString(cter.getColumnIndex("Prenom"))+" "+cter.getString(cter.getColumnIndex("Nom"));
                     } while (cter.moveToNext());
                 }
                 cter.close();
             }
 
-            // Requête pour le réalisateur
+            // Requête pour les acteurs
+            Cursor cqua = newDB.rawQuery("SELECT acteurs.Nom as Nom, acteurs.Prenom as Prenom FROM films, acteurs, joue WHERE films.NumFilm= joue.NumFilm AND acteurs.NumActeur=joue.NumActeur AND films.NumFilm = " + refFilm, null);
+            if (cqua!= null) {
+                if (cqua.moveToFirst()) {
+                    do {
+                        Acteurs.add(cqua.getString(cqua.getColumnIndex("Prenom"))+" "+cqua.getString(cqua.getColumnIndex("Nom")));
+                        //NomActeur = cqua.getString(cqua.getColumnIndex("Nom"));
+                        //PrenomReal = cqua.getString(cter.getColumnIndex("Prenom"));
+                    } while (cter.moveToNext());
+                }
+                cqua.close();
+            }
+
 
         } catch (SQLiteException se ) {
             Log.e(getClass().getSimpleName(), "Could not create or Open the database");
@@ -133,7 +146,10 @@ public class FicheFilm extends AppCompatActivity {
         duree_film.setText("Durée: "+Duree);
         TextView pays_film = (TextView)findViewById(R.id.pays_film);
         pays_film.setText("Pays: "+Pays);
-
+        TextView realisateur_film = (TextView)findViewById(R.id.realisateur_film);
+        realisateur_film.setText("Réalisateur: "+Realisateur);
+        TextView acteurs_film = (TextView)findViewById(R.id.acteurs_film);
+        acteurs_film.setText("Acteurs: "+Acteurs.toString());
 
     }
 
