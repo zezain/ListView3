@@ -32,7 +32,7 @@ public class FicheFilm extends AppCompatActivity {
     String Note;
     String Pays;
     String Realisateur;
-    ArrayList<String> Acteurs;
+    ArrayList<String> Acteurs= new ArrayList<String>();
 
 
 
@@ -119,9 +119,8 @@ public class FicheFilm extends AppCompatActivity {
                 if (cqua.moveToFirst()) {
                     do {
                         Acteurs.add(cqua.getString(cqua.getColumnIndex("Prenom"))+" "+cqua.getString(cqua.getColumnIndex("Nom")));
-                        //NomActeur = cqua.getString(cqua.getColumnIndex("Nom"));
-                        //PrenomReal = cqua.getString(cter.getColumnIndex("Prenom"));
-                    } while (cter.moveToNext());
+
+                    } while (cqua.moveToNext());
                 }
                 cqua.close();
             }
@@ -149,7 +148,7 @@ public class FicheFilm extends AppCompatActivity {
         TextView realisateur_film = (TextView)findViewById(R.id.realisateur_film);
         realisateur_film.setText("Réalisateur: "+Realisateur);
         TextView acteurs_film = (TextView)findViewById(R.id.acteurs_film);
-        acteurs_film.setText("Acteurs: "+Acteurs.toString());
+        acteurs_film.setText("Acteurs: "+Acteurs.toString().substring(1,Acteurs.toString().length()-1));
 
     }
 
