@@ -46,7 +46,7 @@ public class FifthFragment extends ListFragment{
 
             Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
 
-            Cursor c = newDB.rawQuery("SELECT pays.NumPays, films.Titre as Titre, pays.Nom as Nom FROM films, Nom WHERE films.NumFilm= produiten.NumFilm AND produiten.NumPays=pays.NumPays ORDER BY Pays" , null);
+            Cursor c = newDB.rawQuery("SELECT pays.NumPays, films.NumFilm as NumFilm, films.Titre as Titre, pays.Nom as Nom FROM films, pays, produiten WHERE films.NumFilm= produiten.NumFilm AND produiten.NumPays=pays.NumPays ORDER BY Nom" , null);
 
             BarreDeNavigation.Reference.clear();
 
@@ -55,8 +55,8 @@ public class FifthFragment extends ListFragment{
                     do {
                         BarreDeNavigation.Reference.add(c.getString(c.getColumnIndex("NumFilm")));
                         String Titre = c.getString(c.getColumnIndex("Titre"));
-                        String Pays= c.getString(c.getColumnIndex("Pays"));
-                        results.add(Pays +" - "+ Titre );
+                        String Nom= c.getString(c.getColumnIndex("Nom"));
+                        results.add(Nom +" - "+ Titre );
                     } while (c.moveToNext());
                 }
 
