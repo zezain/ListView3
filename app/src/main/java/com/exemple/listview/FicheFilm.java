@@ -30,6 +30,8 @@ public class FicheFilm extends AppCompatActivity {
     String Duree;
     String Note;
     String Pays;
+    String NomReal;
+    String PrenomReal;
 
     
     @Override
@@ -97,6 +99,20 @@ public class FicheFilm extends AppCompatActivity {
                 cbis.close();
             }
 
+            // Requête pour le réalisateur
+            Cursor cter = newDB.rawQuery("SELECT realisateurs.Nom as Nom, realisateurs.Prenom as Prenom FROM films, , realise WHERE films.NumFilm= realise.NumFilm AND realisateurs.NumReal=realise.NumReal AND films.NumFilm = " + refFilm, null);
+            if (cter!= null) {
+                if (cter.moveToFirst()) {
+                    do {
+
+                       NomReal = cter.getString(cter.getColumnIndex("Nom"));
+                       PrenomReal = cter.getString(cter.getColumnIndex("Prenom"));
+                    } while (cter.moveToNext());
+                }
+                cter.close();
+            }
+
+            // Requête pour le réalisateur
 
         } catch (SQLiteException se ) {
             Log.e(getClass().getSimpleName(), "Could not create or Open the database");
