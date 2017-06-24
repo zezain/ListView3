@@ -152,6 +152,7 @@ public class BarreDeNavigation extends AppCompatActivity
 
 
     public static boolean saveArray()
+            // Voir commentaire avec 78 votes: https://stackoverflow.com/questions/7057845/save-arraylist-to-sharedpreferences
     {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(myContext);
         SharedPreferences.Editor mEdit1 = sp.edit();
