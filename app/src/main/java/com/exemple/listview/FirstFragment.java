@@ -64,6 +64,8 @@ public class FirstFragment extends ListFragment{
                 c.close();
             }
 
+            BarreDeNavigation.saveArray();
+
 
         } catch (SQLiteException se ) {
             Log.e(getClass().getSimpleName(), "Could not create or Open the database");

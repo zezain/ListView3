@@ -1,7 +1,10 @@
 package com.exemple.listview;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -32,6 +35,7 @@ public class BarreDeNavigation extends AppCompatActivity
 //  static ArrayList<String> Note = new ArrayList<String>();
 //    static ArrayList<String> Image = new ArrayList<String>();
     static ArrayList<String> Reference = new ArrayList<String>();
+    static Context myContext;
 
 
     @Override
@@ -58,6 +62,8 @@ public class BarreDeNavigation extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        myContext = this.getApplicationContext();
     }
 
     @Override
@@ -133,10 +139,44 @@ public class BarreDeNavigation extends AppCompatActivity
         // animation.setDuration(1000);
         Animation animation = AnimationUtils.loadAnimation(this.getApplicationContext(), R.anim.animation);
         v.startAnimation(animation);
+        loadArray(myContext);
+        Log.d("ARRAY REFRENCE ------",Reference.toString());
         Intent openNewIntent = new Intent(this, FicheFilm.class);
         openNewIntent.putExtra("REFERENCE",Reference.get(position));
-        Log.d("ARRAY REFRENCE ------OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",Reference.toString());
+
+
+
         startActivity(openNewIntent);
+
+    }
+
+
+    public static boolean saveArray()
+    {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(myContext);
+        SharedPreferences.Editor mEdit1 = sp.edit();
+    /* sKey is an array */
+        mEdit1.putInt("Status_size", Reference.size());
+
+        for(int i=0;i<Reference.size();i++)
+        {
+            mEdit1.remove("Status_" + i);
+            mEdit1.putString("Status_" + i, Reference.get(i));
+        }
+
+        return mEdit1.commit();
+    }
+
+    public static void loadArray(Context mContext)
+    {
+        SharedPreferences mSharedPreference1 =   PreferenceManager.getDefaultSharedPreferences(mContext);
+        Reference.clear();
+        int size = mSharedPreference1.getInt("Status_size", 0);
+
+        for(int i=0;i<size;i++)
+        {
+            Reference.add(mSharedPreference1.getString("Status_" + i, null));
+        }
 
     }
 }
