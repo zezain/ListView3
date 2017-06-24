@@ -135,6 +135,7 @@ public class BarreDeNavigation extends AppCompatActivity
         v.startAnimation(animation);
         Intent openNewIntent = new Intent(this, FicheFilm.class);
         openNewIntent.putExtra("REFERENCE",Reference.get(position));
+        Log.d("ARRAY REFRENCE ------OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",Reference.toString());
         startActivity(openNewIntent);
 
     }

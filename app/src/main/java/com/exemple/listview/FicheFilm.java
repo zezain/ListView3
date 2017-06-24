@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 public class FicheFilm extends AppCompatActivity {
 
@@ -42,6 +43,8 @@ public class FicheFilm extends AppCompatActivity {
         });
 
         refFilm = getIntent().getStringExtra("REFERENCE");
+        openAndQueryDatabase();
+        rempliText();
 
     }
 
@@ -56,7 +59,7 @@ public class FicheFilm extends AppCompatActivity {
 
             Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
 
-            Cursor c = newDB.rawQuery("SELECT Titre, Annee, Resume, Image, Duree, Note FROM films ORDER BY Annee WHERE NumFilm = " + refFilm, null);
+            Cursor c = newDB.rawQuery("SELECT Titre, Annee, Resume, Image, Duree, Note FROM films WHERE NumFilm = " + refFilm, null);
 
             BarreDeNavigation.Reference.clear();
 
@@ -64,12 +67,12 @@ public class FicheFilm extends AppCompatActivity {
                 if (c.moveToFirst()) {
                     do {
 
-                        String Titre = c.getString(c.getColumnIndex("Titre"));
-                        String Annee = c.getString(c.getColumnIndex("Annee"));
-                        String Resume = c.getString(c.getColumnIndex("Resume"));
-                        String Image = c.getString(c.getColumnIndex("Image"));
-                        String Duree = c.getString(c.getColumnIndex("Duree"));
-                        String Note = c.getString(c.getColumnIndex("Note"));
+                        Titre = c.getString(c.getColumnIndex("Titre"));
+                        Annee = c.getString(c.getColumnIndex("Annee"));
+                        Resume = c.getString(c.getColumnIndex("Resume"));
+                        Image_path = c.getString(c.getColumnIndex("Image"));
+                        Duree = c.getString(c.getColumnIndex("Duree"));
+                        Note = c.getString(c.getColumnIndex("Note"));
 
                     } while (c.moveToNext());
                 }
@@ -81,6 +84,16 @@ public class FicheFilm extends AppCompatActivity {
         } catch (SQLiteException se ) {
             Log.e(getClass().getSimpleName(), "Could not create or Open the database");
         }
+    }
+
+    private void rempliText(){
+        TextView titre_film = (TextView)findViewById(R.id.titre_film);
+        titre_film.setText(Titre);
+       // TextView annee_film = (TextView)findViewById(R.id.annee_film);
+        //titre_film.setText(Annee);
+
+
+
     }
 }
 
