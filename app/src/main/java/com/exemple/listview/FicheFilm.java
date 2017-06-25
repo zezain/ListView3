@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -135,18 +136,26 @@ public class FicheFilm extends AppCompatActivity {
 
         TextView titre_film = (TextView)findViewById(R.id.titre_film);
         titre_film.setText(Titre);
+
         TextView annee_film = (TextView)findViewById(R.id.annee_film);
         annee_film.setText("Année: "+Annee);
+
         TextView note_film = (TextView)findViewById(R.id.note_film);
         note_film.setText("Note: "+Note+"/10");
+
         TextView resume_film = (TextView)findViewById(R.id.resume_film);
         resume_film.setText("Résumé: \n"+Resume);
+        resume_film.setMovementMethod(new ScrollingMovementMethod());
+
         TextView duree_film = (TextView)findViewById(R.id.duree_film);
         duree_film.setText("Durée: "+Duree);
+
         TextView pays_film = (TextView)findViewById(R.id.pays_film);
         pays_film.setText("Pays: "+Pays);
+
         TextView realisateur_film = (TextView)findViewById(R.id.realisateur_film);
         realisateur_film.setText("Réalisateur: "+Realisateur);
+
         TextView acteurs_film = (TextView)findViewById(R.id.acteurs_film);
         acteurs_film.setText("Acteurs: "+Acteurs.toString().substring(1,Acteurs.toString().length()-1));
 
