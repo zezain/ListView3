@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class FicheFilm extends AppCompatActivity {
 
-
+    //Variables locales
     String refFilm;
     private SQLiteDatabase newDB;
     String Annee;
@@ -55,17 +55,16 @@ public class FicheFilm extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
+        //On récupère la ref du film
         refFilm = getIntent().getStringExtra("REFERENCE");
         openAndQueryDatabase();
+        //Remplissage des textView
         rempliText();
+
+        //TELECHARGEMENT DE L'IMAGE DU FILM A PaRTIR DE IMDB
         new DownloadImageTask((ImageView) findViewById(R.id.imageView2)).execute(Image_path);
 
 
-    }
-
-    public void boutonFilm(View v){
-        Log.d("FILM A OUVRIR", refFilm );
     }
 
     private void openAndQueryDatabase() {
@@ -163,6 +162,7 @@ public class FicheFilm extends AppCompatActivity {
 
     }
 
+    //Classe auxiliaire pour télécharger une image a partir d'un URL
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         // Voir commentaire sur https://stackoverflow.com/questions/2471935/how-to-load-an-imageview-by-url-in-android
         ImageView bmImage;

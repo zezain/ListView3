@@ -34,7 +34,9 @@ public class FirstFragment extends ListFragment{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //Requete SQL
         openAndQueryDatabase();
+        //Lien avec textViex
         setListAdapter(new ArrayAdapter<String>(getActivity(),R.layout.textview, results));
         getListView().setTextFilterEnabled(true);
     }
@@ -63,7 +65,7 @@ public class FirstFragment extends ListFragment{
 
                 c.close();
             }
-
+            //On sauvegarde la référence de façon perène
             BarreDeNavigation.saveArray();
 
 

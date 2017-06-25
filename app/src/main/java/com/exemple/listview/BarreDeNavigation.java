@@ -3,6 +3,9 @@ package com.exemple.listview;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
@@ -21,6 +24,7 @@ import android.view.MenuItem;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -28,12 +32,6 @@ import java.util.ArrayList;
 public class BarreDeNavigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-//    static ArrayList<String> Titre = new ArrayList<String>();
-//    static ArrayList<String> Annee = new ArrayList<String>();
-//    static ArrayList<String> Resume = new ArrayList<String>();
-//    static ArrayList<String> Realisateur = new ArrayList<String>();
-//  static ArrayList<String> Note = new ArrayList<String>();
-//    static ArrayList<String> Image = new ArrayList<String>();
     static ArrayList<String> Reference = new ArrayList<String>();
     static Context myContext;
 
@@ -63,7 +61,12 @@ public class BarreDeNavigation extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        myContext = this.getApplicationContext();
+        myContext = this.getApplicationContext(); //Reference statique du contexte
+
+        // Ici on appelle le GridFragmet - page d'accueil
+        getFragmentManager().beginTransaction().replace(R.id.content_frame, new GridFragment()).commit();
+
+
     }
 
     @Override
@@ -131,28 +134,37 @@ public class BarreDeNavigation extends AppCompatActivity
         return true;
     }
 
+
+    //Fonction appellé quand choisi un film dans la liste
     public void textClicked(View v) {
+
         ListView lv = (ListView) findViewById(android.R.id.list);
         int position = lv.getPositionForView(v);
+
+        //Debug
         Log.d("FRAGMENT ------", String.valueOf(position));
-        // Animation animation = new AlphaAnimation(0.3f, 1.0f);
-        // animation.setDuration(1000);
+        //Animation du choix de film
         Animation animation = AnimationUtils.loadAnimation(this.getApplicationContext(), R.anim.animation);
         v.startAnimation(animation);
+
+        //Lecture de la derniere liste sauvegarde
         loadArray(myContext);
+
+        //Debug
         Log.d("ARRAY REFRENCE ------",Reference.toString());
+
+        //On appele l'Activité affiche film
         Intent openNewIntent = new Intent(this, FicheFilm.class);
+        //On passe a prochaine activité la référence du film
         openNewIntent.putExtra("REFERENCE",Reference.get(position));
-
-
-
         startActivity(openNewIntent);
 
     }
 
 
     public static boolean saveArray()
-            // Voir commentaire avec 78 votes: https://stackoverflow.com/questions/7057845/save-arraylist-to-sharedpreferences
+    //Comment rendre persistente une liste??
+    // Voir commentaire avec 78 votes: https://stackoverflow.com/questions/7057845/save-arraylist-to-sharedpreferences
     {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(myContext);
         SharedPreferences.Editor mEdit1 = sp.edit();
@@ -168,7 +180,7 @@ public class BarreDeNavigation extends AppCompatActivity
         return mEdit1.commit();
     }
 
-    public static void loadArray(Context mContext)
+    public static void loadArray(Context mContext) //Complement pour récupérer la liste
     {
         SharedPreferences mSharedPreference1 =   PreferenceManager.getDefaultSharedPreferences(mContext);
         Reference.clear();
@@ -180,5 +192,6 @@ public class BarreDeNavigation extends AppCompatActivity
         }
 
     }
+
 }
 
