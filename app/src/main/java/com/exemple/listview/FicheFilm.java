@@ -138,9 +138,9 @@ public class FicheFilm extends AppCompatActivity {
         TextView annee_film = (TextView)findViewById(R.id.annee_film);
         annee_film.setText("Année: "+Annee);
         TextView note_film = (TextView)findViewById(R.id.note_film);
-        note_film.setText("Note: "+Note);
+        note_film.setText("Note: "+Note+"/10");
         TextView resume_film = (TextView)findViewById(R.id.resume_film);
-        resume_film.setText("Résumé: \n "+Resume);
+        resume_film.setText("Résumé: \n"+Resume);
         TextView duree_film = (TextView)findViewById(R.id.duree_film);
         duree_film.setText("Durée: "+Duree);
         TextView pays_film = (TextView)findViewById(R.id.pays_film);

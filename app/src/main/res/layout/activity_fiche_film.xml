@@ -9,7 +9,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="368dp"
+        android:layout_width="384dp"
         android:layout_height="56dp"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay"
@@ -18,7 +18,7 @@
         tools:layout_conversion_absoluteWidth="384dp"
         tools:layout_conversion_absoluteHeight="56dp"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
 
     <include
@@ -45,76 +45,84 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:onClick="boutonFilm"
-        app:layout_anchor="@+id/include2"
-        app:layout_anchorGravity="top|center_horizontal"
-        tools:layout_conversion_absoluteX="148dp"
-        tools:layout_conversion_absoluteY="56dp"
-        tools:layout_conversion_absoluteWidth="88dp"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_editor_absoluteY="56dp"
-        android:layout_marginLeft="150dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="16dp" />
 
     <TextView
         android:id="@+id/titre_film"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="306dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:ellipsize="marquee"
+        android:fontFamily="sans-serif-condensed"
+        android:maxLines="1"
         android:text="TextView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="65dp"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        android:layout_marginTop="70dp"
         android:layout_marginLeft="24dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="121dp"
-        android:layout_height="152dp"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/titre_film"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/resume_film"
-        android:layout_width="341dp"
-        android:layout_height="100dp"
-        android:text="TextView"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        android:layout_marginLeft="22dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="24dp"
+        android:layout_marginRight="100dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.0" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="129dp"
+        android:layout_height="172dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/titre_film"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="24dp" />
+
+    <TextView
+        android:id="@+id/resume_film"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textAlignment="viewStart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
     <TextView
         android:id="@+id/realisateur_film"
-        android:layout_width="337dp"
-        android:layout_height="54dp"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/resume_film"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginLeft="24dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resume_film" />
 
     <TextView
         android:id="@+id/acteurs_film"
-        android:layout_width="340dp"
-        android:layout_height="71dp"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/realisateur_film"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginLeft="24dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/realisateur_film"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
         android:id="@+id/note_film"
@@ -124,7 +132,8 @@
         app:layout_constraintLeft_toRightOf="@+id/imageView2"
         android:layout_marginLeft="24dp"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        android:layout_marginTop="150dp" />
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="24dp" />
 
     <TextView
         android:id="@+id/duree_film"
@@ -134,26 +143,29 @@
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/note_film"
         app:layout_constraintLeft_toRightOf="@+id/imageView2"
-        android:layout_marginLeft="24dp" />
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp" />
 
     <TextView
         android:id="@+id/pays_film"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/acteurs_film"
+        android:layout_width="249dp"
+        android:layout_height="20dp"
         android:layout_marginLeft="24dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acteurs_film" />
 
     <TextView
         android:id="@+id/annee_film"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="7dp"
         android:text="TextView"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pays_film" />
+        app:layout_constraintTop_toBottomOf="@+id/pays_film"
+        android:layout_marginStart="24dp" />
 
 </android.support.constraint.ConstraintLayout>
