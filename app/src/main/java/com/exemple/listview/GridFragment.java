@@ -62,7 +62,7 @@ public class GridFragment extends Fragment {
 
         //On ajoute lo logo
         logo = (ImageView)getActivity().findViewById(R.id.imageLogo) ;
-        logo.setImageResource(R.drawable.img_logo);
+        logo.setImageResource(R.drawable.img_logo_dark);
 
         // Gestion de grdView
         gridView = (GridView) getActivity().findViewById(R.id.gridView);
