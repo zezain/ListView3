@@ -14,18 +14,16 @@ import android.widget.TextView;
 public class DataListView extends ListActivity {
 	
 	private ArrayList<String> results = new ArrayList<String>();
-	//private String tableName = DBHelper.tableName;
 	private SQLiteDatabase newDB;
     /** Appelée quand l'acitivité est créée pour la première fois */
     @Override
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         openAndQueryDatabase();
-        
         displayResultList();
-        
-        
     }
+
 	private void displayResultList() {
 		TextView tView = new TextView(this);
         tView.setText("This data is retrieved from the database and only 4 " +
@@ -35,8 +33,8 @@ public class DataListView extends ListActivity {
         setListAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, results));
         getListView().setTextFilterEnabled(true);
-		
 	}
+
 	private void openAndQueryDatabase() {
 		try {
 			DBHelper dbHelper = new DBHelper(this.getApplicationContext());

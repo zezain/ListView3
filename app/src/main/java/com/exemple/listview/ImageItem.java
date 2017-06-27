@@ -2,7 +2,7 @@ package com.exemple.listview;
 
 import android.graphics.Bitmap;
 
-//Classe a parir de http://stacktips.com/tutorials/android/android-gridview-example-building-image-gallery-in-android#9-download-complete-example
+//Classe inspirée de http://stacktips.com/tutorials/android/android-gridview-example-building-image-gallery-in-android#9-download-complete-example
 
 public class ImageItem {
     private Bitmap image;

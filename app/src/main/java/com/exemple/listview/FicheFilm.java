@@ -37,7 +37,6 @@ public class FicheFilm extends AppCompatActivity {
     ArrayList<String> Acteurs= new ArrayList<String>();
 
 
-
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +54,13 @@ public class FicheFilm extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        //On récupère la ref du film
+        //On récupère la référence du film
         refFilm = getIntent().getStringExtra("REFERENCE");
         openAndQueryDatabase();
-        //Remplissage des textView
+        //Remplissage des textViews
         rempliText();
 
-        //TELECHARGEMENT DE L'IMAGE DU FILM A PaRTIR DE IMDB
+        //Téléchargement de l'image du film à partir du site IMDB
         new DownloadImageTask((ImageView) findViewById(R.id.imageView2)).execute(Image_path);
 
 
@@ -74,6 +73,7 @@ public class FicheFilm extends AppCompatActivity {
 
             Log.d("OOOOOOOOOOOOOOOOOOOOOO","OOOOOOOOOOOOOOOOOOOOOO");
 
+            // Requête pour les informations les plus simples (présentes dans la table films)
             Cursor c = newDB.rawQuery("SELECT Titre, Annee, Resume, Image, Duree, Note FROM films WHERE NumFilm = " + refFilm, null);
 
             BarreDeNavigation.Reference.clear();
@@ -93,6 +93,7 @@ public class FicheFilm extends AppCompatActivity {
                 c.close();
             }
 
+            // Requête pour le pays
             Cursor cbis = newDB.rawQuery("SELECT pays.Nom as Pays FROM pays, films, produiten WHERE films.NumFilm= produiten.NumFilm AND produiten.NumPays=pays.NumPays AND films.NumFilm = " + refFilm, null);
             if (cbis != null) {
                 if (cbis.moveToFirst()) {

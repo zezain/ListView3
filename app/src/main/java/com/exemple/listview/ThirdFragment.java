@@ -14,6 +14,9 @@ import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
+
+/** Gestion du menu "Acteurs" du drawer **/
+
 public class ThirdFragment extends ListFragment{
 
     View myView;

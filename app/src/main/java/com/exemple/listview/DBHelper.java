@@ -21,8 +21,7 @@ public class DBHelper extends SQLiteOpenHelper{
 	public static String DBName = "filmotec.db";
 	public static final int version = '1';
 	public static Context currentContext;
-	//public static String tableName = "pays";
-	
+
 
 	public DBHelper(Context context) {
 		super(context, DBName, null, version);

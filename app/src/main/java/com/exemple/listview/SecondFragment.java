@@ -14,6 +14,7 @@ import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
+/** Gestion du menu "Titre" du drawer **/
 
 public class SecondFragment extends ListFragment{
 

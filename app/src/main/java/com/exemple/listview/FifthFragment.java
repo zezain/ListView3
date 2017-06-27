@@ -14,6 +14,7 @@ import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
+/** Gestion du menu "Pays" du drawer **/
 
 public class FifthFragment extends ListFragment{
 

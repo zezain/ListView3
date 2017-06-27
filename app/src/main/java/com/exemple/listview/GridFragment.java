@@ -64,7 +64,7 @@ public class GridFragment extends Fragment {
         logo = (ImageView)getActivity().findViewById(R.id.imageLogo) ;
         logo.setImageResource(R.drawable.img_logo_dark);
 
-        // Gestion de grdView
+        // Gestion du gridView
         gridView = (GridView) getActivity().findViewById(R.id.gridView);
         gridAdapter = new GridViewAdapter(getActivity().getApplicationContext(), R.layout.grid_item_layout, getData());
         gridView.setAdapter(gridAdapter);

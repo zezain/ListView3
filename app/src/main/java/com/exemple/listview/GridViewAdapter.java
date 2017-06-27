@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-//Classe a parir de http://stacktips.com/tutorials/android/android-gridview-example-building-image-gallery-in-android#9-download-complete-example
+//Classe inspirée de http://stacktips.com/tutorials/android/android-gridview-example-building-image-gallery-in-android#9-download-complete-example
 
 public class GridViewAdapter extends ArrayAdapter<ImageItem> {
 

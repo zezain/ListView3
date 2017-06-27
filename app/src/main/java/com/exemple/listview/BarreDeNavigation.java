@@ -63,7 +63,7 @@ public class BarreDeNavigation extends AppCompatActivity
 
         myContext = this.getApplicationContext(); //Reference statique du contexte
 
-        // Ici on appelle le GridFragmet - page d'accueil
+        // Ici on appelle le GridFragment/page d'accueil
         getFragmentManager().beginTransaction().replace(R.id.content_frame, new GridFragment()).commit();
 
 
@@ -135,7 +135,7 @@ public class BarreDeNavigation extends AppCompatActivity
     }
 
 
-    //Fonction appellé quand choisi un film dans la liste
+    //Fonction appellée quand on choisit un film dans la liste
     public void textClicked(View v) {
 
         ListView lv = (ListView) findViewById(android.R.id.list);
@@ -147,15 +147,15 @@ public class BarreDeNavigation extends AppCompatActivity
         Animation animation = AnimationUtils.loadAnimation(this.getApplicationContext(), R.anim.animation);
         v.startAnimation(animation);
 
-        //Lecture de la derniere liste sauvegarde
+        //Lecture de la dernière liste sauvegardée
         loadArray(myContext);
 
         //Debug
-        Log.d("ARRAY REFRENCE ------",Reference.toString());
+        Log.d("ARRAY REFERENCE ------",Reference.toString());
 
-        //On appele l'Activité affiche film
+        //On appelle l'activité FicheFilm
         Intent openNewIntent = new Intent(this, FicheFilm.class);
-        //On passe a prochaine activité la référence du film
+        //On transmet à la prochaine activité la référence du film que l'utilisateur a sélectionné
         openNewIntent.putExtra("REFERENCE",Reference.get(position));
         startActivity(openNewIntent);
 
@@ -163,12 +163,11 @@ public class BarreDeNavigation extends AppCompatActivity
 
 
     public static boolean saveArray()
-    //Comment rendre persistente une liste??
+    //Comment rendre persistante une liste?
     // Voir commentaire avec 78 votes: https://stackoverflow.com/questions/7057845/save-arraylist-to-sharedpreferences
     {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(myContext);
         SharedPreferences.Editor mEdit1 = sp.edit();
-    /* sKey is an array */
         mEdit1.putInt("Status_size", Reference.size());
 
         for(int i=0;i<Reference.size();i++)
